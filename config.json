@@ -1,0 +1,14 @@
+{
+  "start_msg": "You're stuck in a labyrinth!\nFind the three items that will allow you to escape.\n",
+  "walls": "images/walls.png",
+  "floor": "images/floor.png",
+  "mac_gyver": "images/MacGyver.png",
+  "guardian": "images/Gardien.png",
+  "items":{"needle": {"img": "images/aiguille.png"},
+            "tube": {"img": "images/tube.png"},
+            "ether": {"img": "images/ether.png"},
+  "win_msg" : "You escaped successfully !",
+  "lost_msg" : "It's not for this time. Try agin !"
+}
+            
+
