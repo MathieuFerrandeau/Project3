@@ -1,7 +1,7 @@
 """Game constants"""
 
 MAP_HEIGHT = 15
-MAP_LENGTH = 15
+MAP_LENGHT = 15
 TILE_SIZE = 30
 
 UP = 0
