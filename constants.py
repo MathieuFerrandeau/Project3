@@ -1,14 +1,14 @@
 """Game constants"""
 
 MAP_HEIGHT = 15
-MAP_LENGHT = 15
-TILE_SIZE = 30
-
-UP = 0
-DOWN = 1
-LEFT = 2
-RIGHT = 3
+MAP_LENGTH = 15
+TILE_SIZE = 40
 
 IN_MAZE = 0
-WIN = 1
-LOST = 2
+LOST = 1
+WIN = 2
+
+LEFT = 0
+RIGHT = 1
+UP = 2
+DOWN = 3
