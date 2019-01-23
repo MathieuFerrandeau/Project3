@@ -9,9 +9,6 @@ class Maze:
 		"""teste si le chemin est libre"""
 		pass
 
-	def position(self):
-		pos_x = 0
-		pos_y = 0
 
 class Hero:
 	"""Définition du hero"""
@@ -20,7 +17,7 @@ class Hero:
 		self.beginning()
 
 	def move(self, direction):
-		"""Deplace mac guyver dans la direction choisie"""
+		"""Deplace mac gyver dans la direction choisie"""
 		if direction == LEFT:
 			self.pos_x -= 1
 		elif direction == RIGHT:
@@ -50,3 +47,4 @@ class Hero:
 	def pixel_position(self):
 		"""La position en pixel de Mac Gyver"""
 		return [self.pos_x * TILE_SIZE, self.pos_y * TILE_SIZE]
+

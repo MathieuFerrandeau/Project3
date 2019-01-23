@@ -15,8 +15,8 @@ def draw(game, mac_gyver, images, window):
 				window.blit(images.floor, img_pos)
 			if case == "g":
 				window.blit(images.guardian, img_pos)
-			if case == "m":
-				window.blit(images.mac_gyver, mac_gyver.pixel_position)
+			
+			window.blit(images.mac_gyver, mac_gyver.pixel_position)
 			num_column += 1
 		num_line += 1
 

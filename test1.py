@@ -40,7 +40,7 @@ def main():
                 elif event.key == K_DOWN: 
                     mac_gyver.move(DOWN)
 
-                display.draw(game, mac_gyver, images, window)
+            display.draw(game, mac_gyver, images, window)
 
 if __name__ == "__main__":
 	main()
