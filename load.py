@@ -3,7 +3,7 @@ import pygame
 
 
 class Images:
-
+	"""charge les images a partir des paramètres de config"""
 	def __init__(self, config):
 		self.mac_gyver = self.load_image(config["mac_gyver"])
 		self.guardian = self.load_image(config["guardian"])
@@ -15,16 +15,15 @@ class Images:
 		return pygame.image.load(filename).convert_alpha()
 
 def config_from_file(filename):
+	"""Charge les config du fichier json donné en paramètre"""
 	with open(filename) as data:
 		return json.load(data)
 
 def map_from_file(filename):
+	"""Charge le labyrinthe a partir du fichier donnée en paramètre"""
 	with open(filename, "r") as map_file:
 		maze_map = [list(line) for line in map_file]
 	return maze_map
 
 
-class Maze:
 
-	def __init__(self, maze_map):
-		self.maze_map = maze_map
