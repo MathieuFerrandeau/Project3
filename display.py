@@ -15,9 +15,14 @@ def draw(game, mac_gyver, images, window):
 				window.blit(images.floor, img_pos)
 			if case == "g":
 				window.blit(images.guardian, img_pos)
-			
-			window.blit(images.mac_gyver, mac_gyver.pixel_position)
 			num_column += 1
 		num_line += 1
+		
+	if mac_gyver.status != LOST:
+		window.blit(images.mac_gyver, mac_gyver.pixel_position)
+
+	for item in game.items:
+		if game.items[item].show:
+			window.blit(images.items[item], game.items[item].pixel_position)
 
 	pygame.display.flip()

@@ -9,6 +9,9 @@ class Images:
 		self.guardian = self.load_image(config["guardian"])
 		self.wall = self.load_image(config["wall"])
 		self.floor = self.load_image(config["floor"])
+		self.items = {}
+		for item in config["items"]:
+			self.items[item] = self.load_image(config["items"][item]["img"])
 
 	@classmethod
 	def load_image(cls, filename):

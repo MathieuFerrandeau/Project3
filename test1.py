@@ -12,12 +12,12 @@ from constants import *
 def main():
     """Main function"""
     pygame.init()
-    window = pygame.display.set_mode((MAP_LENGTH * 60, MAP_HEIGHT * 60))
+    window = pygame.display.set_mode((MAP_LENGTH * TILE_SIZE, MAP_HEIGHT * TILE_SIZE))
 
     config = load.config_from_file("config.json")
     images = load.Images(config)
-    game = lvl.Maze(load.map_from_file("maze.xsb"))
-    mac_gyver = lvl.Hero(game)
+    game = lvl.Maze(load.map_from_file("maze.xsb"), config["items"])
+    mac_gyver = lvl.Hero(game, config["items"])
 
 
     display.draw(game, mac_gyver, images, window)
@@ -39,6 +39,9 @@ def main():
                     mac_gyver.move(UP)
                 elif event.key == K_DOWN: 
                     mac_gyver.move(DOWN)
+
+            if mac_gyver.status == WIN:
+                    continuer = 0
 
             display.draw(game, mac_gyver, images, window)
 
