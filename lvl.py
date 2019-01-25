@@ -56,7 +56,6 @@ class Hero:
 		self.game = game
 		self.beginning()
 		
-
 	def move(self, direction):
 		"""Deplace mac gyver dans la direction choisie et appelle la méthode pour ramasser les objets"""
 		if self.game.free_way(self.pos_x, self.pos_y, direction):
