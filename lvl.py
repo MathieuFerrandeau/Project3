@@ -55,9 +55,10 @@ class Hero:
 	def __init__(self, game, items):
 		self.game = game
 		self.beginning()
+		
 
 	def move(self, direction):
-		"""Deplace mac gyver dans la direction choisie"""
+		"""Deplace mac gyver dans la direction choisie et appelle la méthode pour ramasser les objets"""
 		if self.game.free_way(self.pos_x, self.pos_y, direction):
 			if direction == LEFT:
 				self.pos_x -= 1
@@ -67,10 +68,12 @@ class Hero:
 				self.pos_y -= 1
 			elif direction == DOWN:
 				self.pos_y += 1
+			self.gather()
 
 	def beginning(self):
-		"""Place Mac Guyver dans sa position initiale"""
+		"""Place Mac Guyver dans sa position initiale et met le compteur d'items a 0"""
 		self.pos_y, self.pos_x = self.start_position(self.game)
+		self.num_items = 0
 
 	@classmethod
 	def start_position(cls, game):
@@ -83,6 +86,14 @@ class Hero:
 					return (num_line, num_column)
 				num_column += 1
 			num_line += 1
+
+	def gather(self):
+		"""Ramasse les objets"""
+		for item in self.game.items:
+			if (self.game.items[item].pos_x == self.pos_x and
+				self.game.items[item].pos_y == self.pos_y):
+				self.num_items += 1
+				self.game.items[item].show = False
 
 	@property
 	def pixel_position(self):
