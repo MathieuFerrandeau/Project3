@@ -101,6 +101,8 @@ class Hero:
                 self.game.items[item].show = False
                 if self.item_msg[item] != None:
                     print(self.item_msg[item])
+                if self.items_count == 3:
+                	print("\nNow I can make a syringe, it's time to get out of here")
 
     @property
     def pixel_position(self):

@@ -22,10 +22,11 @@ def main():
 
     display.draw(game, mac_gyver, images, window)
 
-    
+
 
 #BOUCLE INFINIE
     continuer = 1
+    print(config["start_msg"])
     while continuer:
         for event in pygame.event.get():	#Attente des événements
             if event.type == QUIT:
@@ -41,7 +42,11 @@ def main():
                     mac_gyver.move(DOWN)
 
             if mac_gyver.status == WIN:
-                    continuer = 0
+                print(config["win_msg"])
+                continuer = 0
+            elif mac_gyver.status == LOST:
+                print(config["lost_msg"])
+                continuer = 0
 
             display.draw(game, mac_gyver, images, window)
 
