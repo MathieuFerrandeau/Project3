@@ -1,5 +1,5 @@
 from constants import *
-from random import *
+from random import randint
 
 
 class Maze:
@@ -37,6 +37,7 @@ class Maze:
 		self.maze_map[pos_y][pos_x] = "i"
 		return (pos_x, pos_y)
 
+
 class Item:
 	"""decrit un item"""
 	def __init__(self, position):
@@ -55,6 +56,9 @@ class Hero:
 	def __init__(self, game, items):
 		self.game = game
 		self.beginning()
+		self.item_msg = {}
+		for item in items:
+			self.item_msg[item] = items[item].get("msg")
 		
 	def move(self, direction):
 		"""Deplace mac gyver dans la direction choisie et appelle la méthode pour ramasser les objets"""
@@ -72,7 +76,7 @@ class Hero:
 	def beginning(self):
 		"""Place Mac Guyver dans sa position initiale et met le compteur d'items a 0"""
 		self.pos_y, self.pos_x = self.start_position(self.game)
-		self.num_items = 0
+		self.items_count = 0
 
 	@classmethod
 	def start_position(cls, game):
@@ -90,9 +94,12 @@ class Hero:
 		"""Ramasse les objets"""
 		for item in self.game.items:
 			if (self.game.items[item].pos_x == self.pos_x and
-				self.game.items[item].pos_y == self.pos_y):
-				self.num_items += 1
+				self.game.items[item].pos_y == self.pos_y and
+				self.game.items[item].show):
+				self.items_count += 1
 				self.game.items[item].show = False
+				if self.item_msg[item] != None:
+					print(self.item_msg[item])
 
 	@property
 	def pixel_position(self):
@@ -103,8 +110,9 @@ class Hero:
 	def status(self):
 		"""Statut de MG si il a perdu, gagné ou dans le labyrinthe"""
 		if self.game.maze_map[self.pos_y][self.pos_x] == "g":
-			return WIN
+			if self.items_count == len(self.game.items):
+				return WIN
+			return LOST
+		return IN_MAZE
 		
 
-
-	
