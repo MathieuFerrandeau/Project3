@@ -1,5 +1,5 @@
 {
-  "start_msg": "\nYou're stuck in a labyrinth!\nFind the three items that will allow you to escape.\n",
+  "start_msg": "\nYou're stuck in a labyrinth!\nFind the three items that will allow you to escape.",
   "wall": "images/wall.png",
   "floor": "images/floor.png",
   "mac_gyver": "images/mac_gyver.png",
@@ -7,6 +7,6 @@
   "items":{"needle": {"img": "images/needle.png", "msg": "\nThis needle will help me."},
             "tube": {"img": "images/tube.png", "msg": "\nThis tube must have a purpose."},
             "ether": {"img": "images/ether.png", "msg": "\nWell ! poison ..."}},
-  "win_msg" : "\nYou escaped successfully !",
-  "lost_msg" : "\nIt's not for this time. Try agin !"
+  "win_msg" : "\nYou escaped successfully !\n",
+  "lost_msg" : "\nThe guardian caught you !\nIt's not for this time. Try agin !\n"
 }
