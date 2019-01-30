@@ -1,10 +1,10 @@
-"""Contient les classes du labyronthe, MG et les items"""
+"""Defined maze classes, MG and items"""
 from random import randint
-from constants import *
+from constants import * #import all constants
 
 
 class Maze:
-    """Définition du labyrinthe et des items"""
+    """Definition of labyrinth and items"""
     def __init__(self, maze_map, items):
         self.maze_map = maze_map
         self.items = {}
@@ -12,7 +12,7 @@ class Maze:
             self.items[item] = Item(self.random_position())
 
     def free_way(self, pos_x, pos_y, direction):
-        """teste si le chemin est libre"""
+        """Test if the path is free"""
         return (direction == LEFT and pos_x > 0 and
                 self.maze_map[pos_y][pos_x-1] != "#" or
                 direction == RIGHT and pos_x < (MAP_LENGTH - 1) and
@@ -23,13 +23,13 @@ class Maze:
                 self.maze_map[pos_y+1][pos_x] != "#")
 
     def start(self):
-        """place tous les items aléatoirement dans le labyrinthe"""
+        """Place all the items randomly in the labyrinth"""
         for item in self.items:
             self.maze_map[self.items[item].pos_y][self.items[item].pos_x] = " "
             self.items[item] = Item(self.random_position())
 
     def random_position(self):
-        """Choisit une position aléatoire pour placer un item"""
+        """Choose a random position to place an item"""
         pos_x = 0
         pos_y = 0
         while self.maze_map[pos_y][pos_x] != " ":
@@ -40,7 +40,7 @@ class Maze:
 
 
 class Item:
-    """decrit un item"""
+    """Describes an item"""
     def __init__(self, position):
         self.pos_x = position[0]
         self.pos_y = position[1]
@@ -48,12 +48,12 @@ class Item:
 
     @property
     def pixel_position(self):
-        """la position en pixel des items"""
+        """The pixel position of the items"""
         return [self.pos_x * TILE_SIZE, self.pos_y * TILE_SIZE]
 
 
 class Hero:
-    """Définition du hero"""
+    """Definition of MG"""
     def __init__(self, game, items):
         self.game = game
         self.beginning()
@@ -62,7 +62,7 @@ class Hero:
             self.item_msg[item] = items[item].get("msg")
 
     def move(self, direction):
-        """Deplace MG dans la direction choisie et call la méthode pour ramasser les objets"""
+        """Move MG in the chosen direction and call the method to pick up objects"""
         if self.game.free_way(self.pos_x, self.pos_y, direction):
             if direction == LEFT:
                 self.pos_x -= 1
@@ -75,13 +75,13 @@ class Hero:
             self.gather()
 
     def beginning(self):
-        """Place Mac Guyver dans sa position initiale et met le compteur d'items a 0"""
+        """Place Mac Guyver in its initial position and put the item counter at 0"""
         self.pos_y, self.pos_x = self.start_position(self.game)
         self.items_count = 0
 
     @classmethod
     def start_position(cls, game):
-        """initialise la position de Mac Gyver"""
+        """Initializes the position of MG"""
         num_line = 0
         for line in game.maze_map:
             num_column = 0
@@ -92,26 +92,26 @@ class Hero:
             num_line += 1
 
     def gather(self):
-        """Ramasse les objets"""
+        """Collect objects"""
         for item in self.game.items:
             if (self.game.items[item].pos_x == self.pos_x and
-                self.game.items[item].pos_y == self.pos_y and
-                self.game.items[item].show):
+                    self.game.items[item].pos_y == self.pos_y and
+                    self.game.items[item].show):
                 self.items_count += 1
                 self.game.items[item].show = False
-                if self.item_msg[item] != None:
+                if self.item_msg[item] is not None:
                     print(self.item_msg[item])
                 if self.items_count == 3:
-                	print("\nNow I can make a syringe, it's time to get out of here !")
+                    print("Now I can make a syringe, it's time to get out of here !")
 
     @property
     def pixel_position(self):
-        """La position en pixel de Mac Gyver"""
+        """The pixel position of MG"""
         return [self.pos_x * TILE_SIZE, self.pos_y * TILE_SIZE]
 
     @property
-    def status(self):
-        """Statut de MG si il a perdu, gagné ou dans le labyrinthe"""
+    def state(self):
+        """State of MG if he has lost, won or is in the labyrinth"""
         if self.game.maze_map[self.pos_y][self.pos_x] == "g":
             if self.items_count == len(self.game.items):
                 return WIN

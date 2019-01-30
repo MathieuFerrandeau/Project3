@@ -1,9 +1,9 @@
-"""Allows display"""
+"""Allows Display"""
 import pygame
 from constants import TILE_SIZE, LOST
 
 def draw(game, mac_gyver, images, window):
-    """Dessine le jeu"""
+    """Draw the maze"""
     num_line = 0
     for line in game.maze_map:
         num_column = 0
@@ -19,7 +19,7 @@ def draw(game, mac_gyver, images, window):
             num_column += 1
         num_line += 1
 
-    if mac_gyver.status != LOST:
+    if mac_gyver.state != LOST:
         window.blit(images.mac_gyver, mac_gyver.pixel_position)
 
     for item in game.items:
