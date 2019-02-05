@@ -28,7 +28,6 @@ def main():
     in_game = True
     stop_game = False
 
-# pylint: disable=W0401, E0602
 
     # Infinite loop
     print(config["start_msg"])
