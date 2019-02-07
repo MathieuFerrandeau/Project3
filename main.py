@@ -2,7 +2,6 @@
 # coding: utf-8
 """Main game file"""
 
-# pylint: disable=W0401, E0602, E1101, R0912, W0614
 
 import pygame
 from pygame.locals import * # import pygame constants
@@ -56,7 +55,7 @@ def main():
                         stop_game = True
                 else:
                     if event.key == K_y:
-                        print("\nThis time it's the right one !")
+                        print("\nHere we go again !")
                         mac_gyver.beginning()
                         game.start()
                         stop_game = False
