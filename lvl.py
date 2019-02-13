@@ -90,6 +90,7 @@ class Hero:
                     return (num_line, num_column)
                 num_column += 1
             num_line += 1
+        return None
 
     def gather(self):
         """Collect objects"""

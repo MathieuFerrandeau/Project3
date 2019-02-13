@@ -4,7 +4,7 @@
 
 
 import pygame
-from pygame.locals import * # import pygame constants
+from pygame.locals import *  # import pygame constants
 
 import load
 import lvl
